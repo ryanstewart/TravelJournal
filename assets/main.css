@@ -11,11 +11,21 @@ body {
 	font-size: 20pt;
 }
 
+#back {
+	left: 0px;
+	width: 75px;
+	height: 58px;
+}
+
+#back.visible {
+	display: block;
+}
+
 #mainslideholder {
 	position: relative;
 	overflow: hidden;
 	width: 320px;
-	height: 400px;
+	height: 350px;
 }
 
 /* Photo start */
@@ -23,7 +33,7 @@ body {
 	position: absolute;
 	overflow: hidden;
 	width: 320px;
-	height: 400px;
+	height: 350px;
 	left: 0px;
 	-webkit-transition: left 0.5s linear;
 }
@@ -35,7 +45,7 @@ body {
 #takephoto {
 	position: absolute;
 	width: 320px;
-	height: 400px;
+	height: 350px;
 	left: 0px;
 	-webkit-transition: left 0.5s linear;
 }
@@ -57,7 +67,7 @@ body {
 #photodetail {
 	position: absolute;
 	width: 320px;
-	height: 400px;
+	height: 350px;
 	left: 320px;
 	-webkit-transition: left 0.5s linear;
 }
@@ -71,7 +81,7 @@ body {
 	width: 210px;
 	height: 280px;
 	margin-left: 40px;
-	padding: 10px 5px 50px 15px;
+	padding: 10px 5px 30px 15px;
 	border: 1px solid #BFBFBF;
 	-webkit-box-shadow: 2px 2px 3px rgba(135, 139, 144, 0.4);
 	-webkit-transform: rotate(3deg);
@@ -86,11 +96,17 @@ body {
 }
 
 #imagetitle {
+	margin-top: 0px;
 	text-align: center;
 	font-family: cursive;
 }
 
+#imagetitle.hidden {
+	display: none;
+}
+
 input {
+	margin-top:0px;
 	width: 90%;
 	font-family: cursive;
 	font-size: 14pt;
@@ -102,7 +118,7 @@ input {
 	position: absolute;
 	overflow: hidden;
 	width: 320px;
-	height: 400px;
+	height: 350px;
 	left: 320px;
 	-webkit-transition: left 0.5s linear;	
 }
@@ -115,7 +131,10 @@ input {
 
 /** Footer start **/
 #footer {
+	margin-left:50px;
+	position: absolute;
 	font-family: cursive;
+	bottom: 0px;
 }
 
 #footer a {

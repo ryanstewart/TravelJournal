@@ -9,12 +9,11 @@
 	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
 	-->
-	<script src="http://localhost:1740/target/target-script-min.js#anonymous"></script>
 	<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
   </head>
  <body onload="onBodyLoad()">
-	<div id="header">Travel Scrapbook</div> 
+	<div id="header"><!-- <div id="back"><img src="assets/back.png" width="75" height="58"></div> -->Travel Scrapbook</div> 
 	<div id="mainslideholder">
 		<div id="photoslideholder">
 			<div id="takephoto">
@@ -39,8 +38,8 @@
 		</div>
 	  </div>
 	  <div id="footer">
-	  	<a href="#" onclick="showCamera()">Snap Photo</a>
-	  	<a href="#" onclick="showPhotoList()">Browse Photos</a>
+	  	<a href="#" onclick="showCamera()"><img src="assets/take_photo_off.png" width="77" height="75"></a>
+	  	<a href="#" onclick="showPhotoList()"><img src="assets/photo_list_off.png" width="116" height="75"></a>
 	  </div>
   </body>
 </html>

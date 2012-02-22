@@ -44,26 +44,26 @@ function onGetPhotoSuccess(tx,results) {
 function getCamera()
 {
 	// ****** for testing in browser ******
-	photodb = window.openDatabase("photos","1.0","Photo Database",1000000);
-	photodb.transaction(getTable, onDBError, onGetTableSuccess);
+	// document.getElementById('takephoto').className = 'animate';
+	// document.getElementById('photodetail').className = 'animate';
+	// photodb = window.openDatabase("photos","1.0","Photo Database",1000000);
+	// photodb.transaction(getTable, onDBError, onGetTableSuccess);
 
-	var storage = window.localstorage;
+	// var storage = window.localstorage;
 
 
-	document.getElementById('takephoto').className = 'animate';
-	document.getElementById('photodetail').className = 'animate';
 	// ****** end browser test *******
 
-	// var options = {
-	// 	quality: 50,
-	// 	destinationType : Camera.DestinationType.FILE_URI,
-	// 	allowEdit: true,
-	// 	encodingType: Camera.EncodingType.JPEG 
-	// }
+	var options = {
+		quality: 50,
+		destinationType : Camera.DestinationType.FILE_URI,
+		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG 
+	}
 
-	// // Start grabbing the lat/lon coordinates
-	// navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
-	// navigator.camera.getPicture(onSuccess, onFail,options);
+	// Start grabbing the lat/lon coordinates
+	navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
+	navigator.camera.getPicture(onSuccess, onFail,options);
 
 
 }
@@ -74,8 +74,8 @@ function onSuccess(imageData) {
     var image = document.getElementById('image');
     	image.src = imageData;
     
-	document.getElementById('photo').className = 'visible';
-	document.getElementById('camerabutton').className = "hidden";
+	document.getElementById('takephoto').className = 'animate';
+	document.getElementById('photodetail').className = 'animate';
 	
     // image.src = "data:image/jpeg;base64," + imageData;
 }
@@ -127,7 +127,7 @@ function onblur(e) {
 // Showing the camera
 function showCamera () {
 	document.getElementById('photoslideholder').className = "";
-	document.getElementById('photolist').className = "";
+	document.getElementById('photolist').className = "e";
 }
 
 // The photo list
