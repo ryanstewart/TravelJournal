@@ -11,6 +11,39 @@ body {
 	font-size: 20pt;
 }
 
+#mainslideholder {
+	position: relative;
+	overflow: hidden;
+	width: 320px;
+	height: 400px;
+}
+
+/* Photo start */
+#photoslideholder {
+	position: absolute;
+	overflow: hidden;
+	width: 320px;
+	height: 400px;
+	left: 0px;
+	-webkit-transition: left 0.5s linear;
+}
+
+#photoslideholder.animate {
+	left: -320px;
+}
+
+#takephoto {
+	position: absolute;
+	width: 320px;
+	height: 400px;
+	left: 0px;
+	-webkit-transition: left 0.5s linear;
+}
+
+#takephoto.animate {
+	left: -320px;
+}
+
 #camerabutton {
 	background: url('camera_button.png');
 	width:300px;
@@ -19,21 +52,18 @@ body {
 	-webkit-transition: display 0.5 ease-in;
 }
 
-#camerabutton .hidden {
-	display: none;
+/* Image detail */
+
+#photodetail {
+	position: absolute;
+	width: 320px;
+	height: 400px;
+	left: 320px;
+	-webkit-transition: left 0.5s linear;
 }
 
-#imagetitle {
-	text-align: center;
-	font-family: cursive;
-}
-
-#imagetitle .hidden {
-	display: none;
-}
-
-#imagetitle .visible {
-	display: block;
+#photodetail.animate {
+	left:0px;
 }
 
 #photo {
@@ -49,21 +79,46 @@ body {
 	-webkit-transition: display 0.5 ease-in;
 }
 
-.hidden {
-	display: none;
-}
-
-.visible {
-	visibility: visible;
-}
 
 #image {
 	width:200px;
 	height:267px;
 }
 
+#imagetitle {
+	text-align: center;
+	font-family: cursive;
+}
+
 input {
 	width: 90%;
 	font-family: cursive;
 	font-size: 14pt;
+}
+
+
+/** Photo List start **/
+#photolist {
+	position: absolute;
+	overflow: hidden;
+	width: 320px;
+	height: 400px;
+	left: 320px;
+	-webkit-transition: left 0.5s linear;	
+}
+
+#photolist.animate {
+	left: 0px;
+}
+
+
+
+/** Footer start **/
+#footer {
+	font-family: cursive;
+}
+
+#footer a {
+	color: #fff;
+	text-decoration: none;
 }

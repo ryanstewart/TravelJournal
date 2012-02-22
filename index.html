@@ -9,41 +9,38 @@
 	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
 	-->
+	<script src="http://localhost:1740/target/target-script-min.js#anonymous"></script>
 	<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
   </head>
  <body onload="onBodyLoad()">
- 	<div id="header">Travel Scrapbook</div>
- 	<div id="camerabutton" onclick="getCamera();">
+	<div id="header">Travel Scrapbook</div> 
+	<div id="mainslideholder">
+		<div id="photoslideholder">
+			<div id="takephoto">
+				<div id="camerabutton" onclick="getCamera();">
 
- 	</div>  	  
-	  
-<!-- 	  <div id="content">
-	  	<div id="savephoto">
-
-	  	</div> -->
-<!-- 	  	<div id="photolist">
-	  		<ul>
-	  			<li>Photo 1</li>
-	  			<li>Photo 2</li>
-	  			<li>Photo 3</li>
-	  			<li>Photo 4</li>
-	  		</ul>
-	  	</div> -->
-	  	<div id="photodetail">
-	  		<div id="photo" class="hidden">
-	  			<img src="" id="image">
-	  			<h2 id="imagetitle" onclick="titleclick()">Image Title</h2>
-	  		</div>
-<!-- 	  		<div id="map">
-
-	  		</div> -->
-	  	</div>
-
+				</div>
+		 	</div>
+			<div id="photodetail">
+				<div id="photo" class="hidden">
+					<img src="" id="image">
+					<h2 id="imagetitle" onclick="titleclick()">Image Title</h2>
+				</div>
+		  	</div>
+	 	</div>
+		<div id="photolist">
+			<ul>
+				<li>Photo 1</li>
+				<li>Photo 2</li>
+				<li>Photo 3</li>
+				<li>Photo 4</li>
+			</ul>
+		</div>
 	  </div>
-	  <!-- <div id="footer">
-	  	<a href="#" onclick="getCamera()">Snap Photo</a>
-	  	<a href="#">Browse Photos</a>
-	  </div>	 -->
+	  <div id="footer">
+	  	<a href="#" onclick="showCamera()">Snap Photo</a>
+	  	<a href="#" onclick="showPhotoList()">Browse Photos</a>
+	  </div>
   </body>
 </html>

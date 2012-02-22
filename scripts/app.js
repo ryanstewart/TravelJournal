@@ -1,3 +1,5 @@
+var photodb;
+
 function onBodyLoad()
 {		
 	document.addEventListener("deviceready",onDeviceReady,false);
@@ -6,8 +8,9 @@ function onBodyLoad()
 function onDeviceReady()
 {
 	// do your thing!
-	var photodb = window.opendatabase("photos","1.0","Photo Database",100000);
-	 	photodb.transaction(getPhotos, onDBError); 	
+	photodb = window.opendatabase("photos","1.0","Photo Database",100000);
+	photodb.transaction(getTable, onDBError, onGetTableSuccess);
+	 	
 }
 
 // DB calls
@@ -16,16 +19,23 @@ function onDBError (tx) {
 	 console.log("Error processing SQL: "+err.code);
 }
 
+function getTable (tx) {
+	tx.executeSql('CREATE TABLE IF NOT EXISTS PHOTOS (id unique, file_uri, title)');
+	// tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (1, "file://blah.1", "First Photo")');
+ //    tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (2, "file://blah.2", "Second Photo")');
+}
+
+function onGetTableSuccess () {
+	photodb.transaction(getPhotos, onDBError); 	
+}
+
 function getPhotos (tx) {
+	console.log('getting photos');
 	tx.executeSql('SELECT * FROM PHOTOS',[],onGetPhotoSuccess,onDBError);
 }
 
 function onGetPhotoSuccess(tx,results) {
-	console.log("Insert ID = " + results.insertId);
-    // this will be 0 since it is a select statement
-    console.log("Rows Affected = " + results.rowAffected);
-    // the number of rows returned by the select statement
-    console.log("Insert ID = " + results.rows.length);
+	console.log(results.rows.item(0));
 }
 
 
@@ -33,22 +43,27 @@ function onGetPhotoSuccess(tx,results) {
 
 function getCamera()
 {
-	// for testing in browser
-	/***
-	document.getElementById('photo').className = 'visible';
-	document.getElementById('camerabutton').className = "hidden";
-	***/
+	// ****** for testing in browser ******
+	photodb = window.openDatabase("photos","1.0","Photo Database",1000000);
+	photodb.transaction(getTable, onDBError, onGetTableSuccess);
 
-	var options = {
-		quality: 50,
-		destinationType : Camera.DestinationType.FILE_URI,
-		allowEdit: true,
-		encodingType: Camera.EncodingType.JPEG 
-	}
+	var storage = window.localstorage;
 
-	// Start grabbing the lat/lon coordinates
-	navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
-	navigator.camera.getPicture(onSuccess, onFail,options);
+
+	document.getElementById('takephoto').className = 'animate';
+	document.getElementById('photodetail').className = 'animate';
+	// ****** end browser test *******
+
+	// var options = {
+	// 	quality: 50,
+	// 	destinationType : Camera.DestinationType.FILE_URI,
+	// 	allowEdit: true,
+	// 	encodingType: Camera.EncodingType.JPEG 
+	// }
+
+	// // Start grabbing the lat/lon coordinates
+	// navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
+	// navigator.camera.getPicture(onSuccess, onFail,options);
 
 
 }
@@ -106,4 +121,18 @@ function onblur(e) {
 
 
 	title.className = "visible";
+}
+
+
+// Showing the camera
+function showCamera () {
+	document.getElementById('photoslideholder').className = "";
+	document.getElementById('photolist').className = "";
+}
+
+// The photo list
+
+function showPhotoList () {
+	document.getElementById('photoslideholder').className = "animate";
+	document.getElementById('photolist').className = "animate";
 }
