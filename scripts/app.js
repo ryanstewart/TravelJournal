@@ -1,6 +1,6 @@
 var photodb;
 
-function onBodyLoad()
+function onBodyLoad() 
 {		
 	document.addEventListener("deviceready",onDeviceReady,false);
 }
@@ -15,14 +15,17 @@ function onDeviceReady()
 
 // DB calls
 
-function onDBError (tx) {
+function onDBError (tx) 
+{
 	 console.log("Error processing SQL: "+err.code);
 }
 
-function getTable (tx) {
+function getTable (tx) 
+{
+	navigator.notification.alert("DB call is trying");
 	tx.executeSql('CREATE TABLE IF NOT EXISTS PHOTOS (id unique, file_uri, title)');
-	// tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (1, "file://blah.1", "First Photo")');
- //    tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (2, "file://blah.2", "Second Photo")');
+	tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (1, "file://blah.1", "First Photo")');
+ 	tx.executeSql('INSERT INTO PHOTOS (id, file_uri, title) VALUES (2, "file://blah.2", "Second Photo")');
 }
 
 function onGetTableSuccess () {
@@ -57,8 +60,7 @@ function getCamera()
 	var options = {
 		quality: 50,
 		destinationType : Camera.DestinationType.FILE_URI,
-		allowEdit: true,
-		encodingType: Camera.EncodingType.JPEG 
+		allowEdit: true
 	}
 
 	// Start grabbing the lat/lon coordinates
